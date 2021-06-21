@@ -1,5 +1,4 @@
 import tkinter as tk
-import tkinter.messagebox as mb
 
 figure = "X"  # Переменная для переключение фигуры
 
@@ -52,7 +51,9 @@ class Button(tk.Button):
         global figure
         if not self.button["text"]:  # если в ячейке где щелкает курсор нет фигуры, тогда разместить
             self.button["text"] = figure
+            print(self.button_id)
             Game.array[self.button_id] = figure  # присвоить игровому списку фигуру по идендификатору
+            print(Game.array)
             Game.check_combo()  # проверить выигрыш
             figure = "O" if figure == "X" else "X"  # поменять фигуру если ход был свершен
         else:
@@ -61,3 +62,8 @@ class Button(tk.Button):
 
     def color(self):
         self.button["bg"] = "red"  # перекраска кнопки в красный
+
+    @classmethod
+    def null_id(cls):
+        cls.__id = 0
+

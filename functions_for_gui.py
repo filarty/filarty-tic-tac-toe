@@ -1,6 +1,5 @@
 import tkinter.messagebox as mb
 import classes_for_gamelogic
-import tkinter as tk
 
 
 def initialization(root):
@@ -46,17 +45,19 @@ def show_winning(root, figure):
     msg = figure
     message_2 = f"{msg} Выиграли" if figure != "Ничья" else "Ничья!"
     mb.showinfo("Игра окончена", message_2)
-    question(root)
+    return question(root)
 
 
 def question(root):
     choice = mb.askquestion("Конец игры", "Начать игру заного?")
     if choice == 'yes':
-        remake()
+        return "OK"
     else:
         root.destroy()
 
 
-def remake():
-    classes_for_gamelogic.Game.array = classes_for_gamelogic.default_array
+def remake():                   # сброс списка с размещенными фигурами, сброс id кнопок а так же сделаных ходов в ноль
+    classes_for_gamelogic.Game.array = classes_for_gamelogic.default_array.copy()
     classes_for_gamelogic.Game.finish_combinations = None
+    classes_for_gamelogic.Button.null_id()
+    classes_for_gamelogic.Game.move = 0
