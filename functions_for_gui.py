@@ -1,5 +1,6 @@
-
+import tkinter.messagebox as mb
 import classes_for_gamelogic
+import tkinter as tk
 
 
 def initialization(root):
@@ -39,3 +40,23 @@ def grid_column_config(root):
     root.grid_rowconfigure(0, minsize=170)
     root.rowconfigure(1, minsize=166)
     root.rowconfigure(2, minsize=166)
+
+
+def show_winning(root, figure):
+    msg = figure
+    message_2 = f"{msg} Выиграли" if figure != "Ничья" else "Ничья!"
+    mb.showinfo("Игра окончена", message_2)
+    question(root)
+
+
+def question(root):
+    choice = mb.askquestion("Конец игры", "Начать игру заного?")
+    if choice == 'yes':
+        remake()
+    else:
+        root.destroy()
+
+
+def remake():
+    classes_for_gamelogic.Game.array = classes_for_gamelogic.default_array
+    classes_for_gamelogic.Game.finish_combinations = None
