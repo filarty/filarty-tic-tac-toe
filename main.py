@@ -5,6 +5,8 @@ import tkinter as tk
 root = tk.Tk()  # создание главной поверхности
 array = None
 
+gl.x = tk.PhotoImage(file="image\klipartz.com.png")
+gl.o = tk.PhotoImage(file="image\circle.png")
 
 # функция перекраски кнопок в соответствии выигрышной комбинации и закончить игру
 def Win():

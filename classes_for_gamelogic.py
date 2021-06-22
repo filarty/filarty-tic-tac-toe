@@ -6,6 +6,8 @@ default_array = ["0", "1", "2",  # список для размещения фи
                  "3", "4", "5",
                  "6", "7", "8"]
 
+x = None
+o = None
 
 class Game:
     winning = [(0, 1, 2), (3, 4, 5), (6, 7, 8), (1, 4, 7), (0, 3, 6), (2, 5, 8), (0, 4, 8),
@@ -50,6 +52,7 @@ class Button(tk.Button):
     def add_figure(self):  # добавить фигуру при нажатии кнопки мыши
         global figure
         if not self.button["text"]:  # если в ячейке где щелкает курсор нет фигуры, тогда разместить
+            self.button["image"] = x if figure == "X" else o
             self.button["text"] = figure
             print(self.button_id)
             Game.array[self.button_id] = figure  # присвоить игровому списку фигуру по идендификатору
@@ -66,4 +69,3 @@ class Button(tk.Button):
     @classmethod
     def null_id(cls):
         cls.__id = 0
-
