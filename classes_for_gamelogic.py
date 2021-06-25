@@ -54,9 +54,7 @@ class Button(tk.Button):
         if not self.button["text"]:  # если в ячейке где щелкает курсор нет фигуры, тогда разместить
             self.button["image"] = x if figure == "X" else o
             self.button["text"] = figure
-            print(self.button_id)
             Game.array[self.button_id] = figure  # присвоить игровому списку фигуру по идендификатору
-            print(Game.array)
             Game.check_combo()  # проверить выигрыш
             figure = "O" if figure == "X" else "X"  # поменять фигуру если ход был свершен
         else:
